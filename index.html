@@ -29,8 +29,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <h2>SALUT</h2>
     <a href="https://www.wojo.com/customer/account/login/">Je me connecte</a>
-      <a href="https://www.wojo.com/assetmanagement/availability/validation?product=1064&related_product=&bundle_option%5B178%5D=394&booking_date=27%2F02%2F2020&bundle_option_qty%5B178%5D=2&rateplan_option=34&rateplan_qty=36&qty=1&options%5B682%5D=27%2F02%2F2020+17h00+-+18h00">ajouter au panier</a>
-<a href="https://www.wojo.com/nextdoorcatalog/ajax_confirmation/success/?isAjax=1&name=Chez+Roger+-+3B&imageSrc=https%3A%2F%2Fwww.wojo.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2F1%2Fsmall_image%2F68x%2F9df78eab33525d08d6e5fb8d27136e95%2F9%2F2%2F92-roger-small.jpg&quote_item_id=181352"> ajouter au panier 22 </a>
+    <button onclick="myFunction()">Click me</button>
+    <script>
+      function myFunction(){
+        var xhr = new XMLHttpRequest();
+xhr.open("POST", "https://www.wojo.com/ajax/index/add/uenc/aHR0cHM6Ly93d3cud29qby5jb20vc2FsbGUtZGUtcmV1bmlvbi0yLXBsYWNlcy0zYi1jaGV6LXJvZ2VyLmh0bWw_b3B0aW9ucz1jYXJ0/product/1064/form_key/ClBeifYedP0BNlnY/", true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.send(JSON.stringify({
+    "product": "1064",
+    "related_product": "bundle_option%5B178%5D=394",
+    "booking_date": "27%2F02%2F2020",
+    "bundle_option_qty%5B178%5D": "2",
+    "rateplan_option": "35",
+    "rateplan_qty": "37",
+    "qty": "1",
+    "options%5B682%5D": "27%2F02%2F2020+17h30+-+18h30",
+    "isAjax": "1"
+}));
+
+      }
+    </script>
+
     <a href="https://www.wojo.com/checkout/register/">Finaliser<a>
 
     <!--
