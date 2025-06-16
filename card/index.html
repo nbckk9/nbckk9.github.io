@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Nicolas Bock - Digital Business Card</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #be93c5, #7bc6cc);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background-color: #f0f0f0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            object-position: center 25%;
+        }
+
+        h1 {
+            color: #22223b;
+            margin: 0 0 10px;
+            font-size: 24px;
+        }
+
+        .title {
+            color: #8a94a6;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            color: #22223b;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        .contact-info,
+        .social-links {
+            text-align: left;
+            margin-left: 0;
+        }
+
+        .contact-info p .social-links a {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info svg,
+        .social-links svg {
+            margin-right: 8px;
+            min-width: 18px;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 10px;
+            justify-content: flex-start;
+            width: 100%;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: #22223b;
+            text-decoration: none;
+            margin: 0;
+            font-size: 16px;
+            text-align: left;
+            width: 100%;
+            padding: 0;
+        }
+
+        .social-links a svg {
+            margin-right: 8px;
+            min-width: 18px;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        .email {
+            color: #1a0dab;
+            text-decoration: none;
+        }
+
+        .email:hover {
+            text-decoration: underline;
+        }
+
+        .linkedin-btn-fullwidth {
+            background: rgb(63, 81, 181);
+            color: #fff;
+            padding: 9px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            justify-content: center;
+            margin-top: 12px;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        .linkedin-btn-fullwidth:hover {
+            background: #3f51b5cc;
+        }
+
+        .card-separator {
+            border: none;
+            border-top: 1px solid #e0e3ea;
+            margin: 12px 0 18px 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="profile-pic"><img src="toto.png" alt="Nicolas Bock profile photo"></div>
+        <h1>Nicolas Bock</h1>
+        <div class="title">Data Engineer & AI Developer</div>
+        <div class="subtitle">J'aide les entreprises à
+            structurer
+            leur stack data et vous guide dans la réussite de vos projets IA !</div>
+        <hr class="card-separator">
+        <div class="social-links">
+            <a href="mailto:nicolas@nbck.me" class="email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="#22223b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+                contact@nbck.me
+            </a>
+            <a href="https://github.com/nbckk9" target="_blank">
+                <svg width="18" height="18" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"
+                        fill="#24292f" />
+                </svg>
+                GitHub
+            </a>
+            <a href="https://www.collective.work/profile/nicolas-bock" target="_blank">
+                <svg width="18" height="18" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9.36426 13.7934C9.36426 11.3856 11.3162 9.43359 13.7241 9.43359C16.1319 9.43359 18.0839 11.3856 18.0839 13.7934C18.0839 16.2013 16.1319 18.1532 13.7241 18.1532C11.3162 18.1532 9.36426 16.2013 9.36426 13.7934Z"
+                        fill="#22223b"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M13.6937 22.6748C8.80011 22.6748 4.83307 18.6986 4.83307 13.7937C4.83307 8.88881 8.80011 4.9126 13.6937 4.9126C16.8706 4.9126 19.6571 6.58845 21.2211 9.10628C21.6322 9.76818 22.3208 10.2413 23.1001 10.2413V10.2413C25.0305 10.2413 26.4308 8.38639 25.4377 6.73096C23.0429 2.73903 18.6795 0.0683594 13.6937 0.0683594C6.13088 0.0683594 0 6.21341 0 13.7937C0 21.374 6.13088 27.5191 13.6937 27.5191C18.7578 27.5191 23.1799 24.7638 25.5491 20.6673C26.507 19.0111 25.108 17.1847 23.1948 17.1847V17.1847C22.4025 17.1847 21.7054 17.6739 21.2987 18.3538C19.7504 20.9423 16.9239 22.6748 13.6937 22.6748Z"
+                        fill="#22223b"></path>
+                </svg>
+                Collective
+            </a>
+        </div>
+        <a href="https://www.linkedin.com/in/bocknicolas/" target="_blank" class="linkedin-btn-fullwidth">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="rgb(63, 81, 181)"
+                style="background:#fff;border-radius:3px;">
+                <rect width="24" height="24" rx="4" fill="rgb(63, 81, 181)" />
+                <path
+                    d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"
+                    fill="#fff" />
+            </svg>
+            Ajoute moi sur LinkedIn
+        </a>
+    </div>
+</body>
+
+</html>
