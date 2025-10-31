@@ -501,18 +501,41 @@
 
         function onCellFocus(row, col) {
             currentCell = { row, col };
-            highlightWord(row, col);
             
-            // Find which clue to highlight
+            // If we already have a current word and the cell is part of it, keep using that word
+            // This prevents switching words when encountering intersections
+            if (currentWord && isCellInWord(row, col, currentWord)) {
+                highlightWord(row, col);
+                const wordIndex = words.findIndex(w => w === currentWord);
+                if (wordIndex !== -1) {
+                    const clueElement = document.querySelector(`.clue[data-word="${wordIndex}"]`);
+                    if (clueElement) {
+                        clueElement.classList.add('active');
+                    }
+                }
+                return;
+            }
+            
+            // Otherwise, find all words containing this cell and prefer horizontal first
+            highlightWord(row, col);
+            let foundWord = null;
+            
+            // Prefer horizontal words first, then vertical
             words.forEach((word, index) => {
                 const clueElement = document.querySelector(`.clue[data-word="${index}"]`);
                 if (isCellInWord(row, col, word)) {
                     clueElement.classList.add('active');
-                    currentWord = word;
+                    if (!foundWord || (word.direction === 'horizontal' && foundWord.direction === 'vertical')) {
+                        foundWord = word;
+                    }
                 } else {
                     clueElement.classList.remove('active');
                 }
             });
+            
+            if (foundWord) {
+                currentWord = foundWord;
+            }
         }
 
         function isCellInWord(row, col, word) {
