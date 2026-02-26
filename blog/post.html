@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Nicolas Bock</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & base ── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── CSS variables ── */
+    :root {
+      --bg:        #ffffff;
+      --text:      #09090b;
+      --muted:     #71717a;
+      --border:    #e4e4e7;
+      --link:      #09090b;
+      --link-hover:#71717a;
+      --code-bg:   #f4f4f5;
+    }
+
+    html.dark {
+      --bg:        #09090b;
+      --text:      #fafafa;
+      --muted:     #a1a1aa;
+      --border:    #27272a;
+      --link:      #fafafa;
+      --link-hover:#a1a1aa;
+      --code-bg:   #18181b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'JetBrains Mono', 'Fira Mono', 'Cascadia Code', 'Consolas', monospace;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.7;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.2s ease, color 0.2s ease;
+      padding: 0 20px;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    .nav-left a {
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-left a:hover {
+      color: var(--muted);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-right a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nav-right a:hover {
+      color: var(--text);
+    }
+
+    /* ── Theme toggle ── */
+    #theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: inherit;
+      font-size: 13px;
+      padding: 3px 9px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+      line-height: 1.6;
+    }
+
+    #theme-toggle:hover {
+      border-color: var(--muted);
+      color: var(--text);
+    }
+
+    /* ── Article ── */
+    article {
+      padding-bottom: 60px;
+    }
+
+    article h1 {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    article h2 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+
+    article h3 {
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+
+    article p {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    article em {
+      color: var(--muted);
+    }
+
+    article strong {
+      font-weight: 500;
+    }
+
+    article ul, article ol {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.85;
+      margin-bottom: 16px;
+      padding-left: 20px;
+    }
+
+    article li {
+      margin-bottom: 4px;
+    }
+
+    article code {
+      font-family: inherit;
+      font-size: 12px;
+      background: var(--code-bg);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    article pre {
+      background: var(--code-bg);
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+    }
+
+    article pre code {
+      background: none;
+      padding: 0;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    article a {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    article a:hover {
+      color: var(--muted);
+    }
+
+    article hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+
+    article blockquote {
+      border-left: 2px solid var(--border);
+      padding-left: 16px;
+      margin-bottom: 16px;
+      color: var(--muted);
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 20px 0 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .back-link:hover {
+      color: var(--text);
+    }
+
+    /* ── Loading / Error ── */
+    .status-msg {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      padding: 40px 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 28px 0 36px;
+    }
+
+    footer p {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Nav -->
+    <nav>
+      <div class="nav-left">
+        <a href="..">Nicolas Bock</a>
+      </div>
+      <div class="nav-right">
+        <a href="..#blog">blog</a>
+        <button id="theme-toggle" aria-label="Toggle dark mode">&#9790;</button>
+      </div>
+    </nav>
+
+    <!-- Article content rendered here -->
+    <article id="post-content">
+      <p class="status-msg">Loading...</p>
+    </article>
+
+    <a href="..#blog" class="back-link">&larr; back to all posts</a>
+
+    <!-- Footer -->
+    <footer>
+      <p>// &copy; 2025 Nicolas Bock</p>
+    </footer>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@15/marked.min.js"></script>
+  <script>
+    (function () {
+      // ── Theme toggle ──
+      var html    = document.documentElement;
+      var btn     = document.getElementById('theme-toggle');
+      var DARK    = 'dark';
+      var LIGHT   = 'light';
+      var SUN     = '&#9788;';
+      var MOON    = '&#9790;';
+      var KEY     = 'nb-theme';
+
+      function setTheme(mode) {
+        html.classList.remove(DARK, LIGHT);
+        html.classList.add(mode);
+        btn.innerHTML = mode === DARK ? SUN : MOON;
+        btn.setAttribute('aria-label', mode === DARK ? 'Switch to light mode' : 'Switch to dark mode');
+        try { localStorage.setItem(KEY, mode); } catch (e) {}
+      }
+
+      var saved = null;
+      try { saved = localStorage.getItem(KEY); } catch (e) {}
+      var preferred = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? DARK : LIGHT);
+      setTheme(preferred);
+
+      btn.addEventListener('click', function () {
+        setTheme(html.classList.contains(DARK) ? LIGHT : DARK);
+      });
+
+      // ── Load post ──
+      var params = new URLSearchParams(window.location.search);
+      var slug   = params.get('slug');
+      var el     = document.getElementById('post-content');
+
+      if (!slug) {
+        el.innerHTML = '<p class="status-msg">No post specified.</p>';
+        return;
+      }
+
+      fetch(slug + '.md')
+        .then(function (res) {
+          if (!res.ok) throw new Error('Not found');
+          return res.text();
+        })
+        .then(function (md) {
+          el.innerHTML = marked.parse(md);
+          var h1 = el.querySelector('h1');
+          if (h1) document.title = h1.textContent + ' \u2014 Nicolas Bock';
+        })
+        .catch(function () {
+          el.innerHTML = '<p class="status-msg">Post not found.</p>';
+        });
+    })();
+  </script>
+</body>
+</html>
