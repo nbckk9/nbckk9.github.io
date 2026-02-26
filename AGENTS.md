@@ -12,14 +12,20 @@ Then open `http://localhost:8000` in a browser. All pages are self-contained HTM
 
 ### Project structure
 
-- `index.html` — Landing page / personal homepage
-- `card/index.html` — Digital business card with profile photo
-- `tennis-games/index.html` — Hub page linking to tennis mini-games
-- `tennix-quiz/index.html` — Tennis trivia quiz (15 questions, all in JS)
-- `tennis-crossword/index.html` — Tennis-themed crossword puzzle
+- `index.html` — Personal homepage (JetBrains Mono theme, dark/light toggle, fr/en i18n)
+- `blog/post.html` — Blog post reader (fetches markdown, renders with marked.js from CDN)
+- `blog/posts.json` — Blog manifest (`[{slug, title, date}]`, newest first). Blog section auto-hides when empty.
+- `blog/*.md` — Blog posts in markdown
 - `CNAME` — GitHub Pages custom domain config (`www.nbck.me`)
+
+### Blog publishing workflow
+
+1. Write a `.md` file in `blog/`
+2. Add an entry to `blog/posts.json`
+3. `git push`
 
 ### Notes
 
 - No lint, test, or build commands exist. Validation is done by serving the files and checking them in a browser.
-- The site is in French.
+- The site supports French and English, with browser language auto-detection. Language preference is saved to localStorage.
+- Dark/light theme follows system preference by default, with manual toggle. Preference is saved to localStorage.
