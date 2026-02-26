@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Nicolas Bock</title>
+    <meta name="description" content="Thoughts on data engineering, Python, and building data pipelines.">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">Nicolas Bock</a>
+        <div class="nav-links">
+            <a href="/blog/">Blog</a>
+            <a href="/#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div class="blog-hero">
+        <div class="container">
+            <h1>Blog</h1>
+            <p>Thoughts on data engineering, Python, and building reliable data systems.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="blog-list" id="blog-list">
+            <p class="blog-empty">Loading posts...</p>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <p>&copy; 2025 Nicolas Bock</p>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="mailto:contact@nbck.me">Email</a>
+            <a href="https://github.com/nbckk9" target="_blank">GitHub</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    async function loadPosts() {
+        const container = document.getElementById('blog-list');
+        try {
+            const res = await fetch('/blog/posts/index.json');
+            const posts = await res.json();
+
+            if (posts.length === 0) {
+                container.innerHTML = '<p class="blog-empty">No posts yet.</p>';
+                return;
+            }
+
+            posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            container.innerHTML = posts.map(post => `
+                <a href="/blog/post.html?slug=${post.slug}" class="blog-item">
+                    <p class="blog-item-date">${formatDate(post.date)}</p>
+                    <p class="blog-item-title">${post.title}</p>
+                    <p class="blog-item-description">${post.description}</p>
+                </a>
+            `).join('');
+        } catch (e) {
+            container.innerHTML = '<p class="blog-empty">No posts yet.</p>';
+        }
+    }
+
+    function formatDate(dateStr) {
+        const d = new Date(dateStr + 'T00:00:00');
+        return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    loadPosts();
+</script>
+
+</body>
+</html>
