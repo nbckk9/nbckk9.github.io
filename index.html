@@ -80,7 +80,7 @@
     }
 
     section {
-      padding: 40px 0;
+      padding: 24px 0;
       opacity: 0;
       transform: translateY(6px);
       animation: fadeUp 0.4s ease forwards;
@@ -123,7 +123,7 @@
       font-weight: 300;
       color: var(--muted);
       line-height: 1.85;
-      margin-top: 16px;
+      margin-top: 12px;
     }
 
     /* ── Section labels ── */
@@ -301,12 +301,11 @@
     /* ── Responsive ── */
     @media (max-width: 520px) {
       .exp-row {
-        grid-template-columns: 90px 1fr;
-        grid-template-rows: auto auto;
+        grid-template-columns: 1fr;
+        gap: 2px;
       }
 
       .exp-role {
-        grid-column: 2;
         text-align: left;
       }
     }
@@ -320,7 +319,8 @@
       <p class="hero-name">Nicolas Bock</p>
       <p class="hero-role">// Software Engineer, Data &amp; AI</p>
       <p class="hero-location">// Lille &amp; Paris &middot; Freelance</p>
-      <p class="hero-bio" id="hero-bio">I help companies with their data and AI projects, from modernising legacy systems to building pipelines and AI agents. Early adopter, passionate about new tech, I like building end-to-end solutions and working on projects that make an impact.</p>
+      <p class="hero-bio" id="hero-bio-1">I help companies with their data and AI projects, from modernising legacy systems to building pipelines and AI agents.</p>
+      <p class="hero-bio" id="hero-bio-2">Early adopter, passionate about new tech, I like building end-to-end solutions and working on projects that make an impact.</p>
     </section>
 
     <!-- Experience -->
@@ -328,12 +328,12 @@
       <p class="section-label" data-i18n="experience">Experience</p>
       <div>
         <div class="exp-row">
-          <span class="exp-date">2024&ndash;Current</span>
+          <span class="exp-date" data-i18n="current">2024 &ndash; current</span>
           <span class="exp-company"><a href="https://www.easierlabs.ai/" target="_blank" rel="noopener noreferrer">Easierlabs</a></span>
           <span class="exp-role">AI Engineer / Data Engineer</span>
         </div>
         <div class="exp-row">
-          <span class="exp-date">2024&ndash;2025</span>
+          <span class="exp-date">2024 &ndash; 2025</span>
           <span class="exp-company"><a href="https://beta.gouv.fr/" target="_blank" rel="noopener noreferrer">Beta Gouv &mdash; DINUM</a></span>
           <span class="exp-role">Data Engineer</span>
         </div>
@@ -435,7 +435,9 @@
         en: {
           role: '// Software Engineer, Data & AI',
           location: '// Lille & Paris \u00b7 Freelance',
-          bio: 'I help companies with their data and AI projects, from modernising legacy systems to building pipelines and AI agents. Early adopter, passionate about new tech, I like building end-to-end solutions and working on projects that make an impact.',
+          bio1: 'I help companies with their data and AI projects, from modernising legacy systems to building pipelines and AI agents.',
+          bio2: 'Early adopter, passionate about new tech, I like building end-to-end solutions and working on projects that make an impact.',
+          current: '2024 \u2013 current',
           experience: 'Experience',
           blog: 'Blog',
           contact: 'Contact'
@@ -443,7 +445,9 @@
         fr: {
           role: '// Ing\u00e9nieur Logiciel, Data & IA',
           location: '// Lille & Paris \u00b7 Freelance',
-          bio: 'J\u2019accompagne les entreprises dans leurs projets data et IA, de la modernisation de syst\u00e8mes legacy \u00e0 la cr\u00e9ation de pipelines et d\u2019agents IA. Touche-\u00e0-tout et passionn\u00e9 par les nouvelles technologies, j\u2019aime construire des solutions compl\u00e8tes et travailler sur des projets \u00e0 impact.',
+          bio1: 'J\u2019accompagne les entreprises dans leurs projets data et IA, de la modernisation de syst\u00e8mes legacy \u00e0 la cr\u00e9ation de pipelines et d\u2019agents IA.',
+          bio2: 'Touche-\u00e0-tout et passionn\u00e9 par les nouvelles technologies, j\u2019aime construire des solutions compl\u00e8tes et travailler sur des projets \u00e0 impact.',
+          current: '2024 \u2013 pr\u00e9sent',
           experience: 'Exp\u00e9rience',
           blog: 'Blog',
           contact: 'Contact'
@@ -455,7 +459,8 @@
         if (!t) return;
         document.querySelector('.hero-role').textContent = t.role;
         document.querySelector('.hero-location').textContent = t.location;
-        document.getElementById('hero-bio').textContent = t.bio;
+        document.getElementById('hero-bio-1').textContent = t.bio1;
+        document.getElementById('hero-bio-2').textContent = t.bio2;
         document.querySelectorAll('[data-i18n]').forEach(function (el) {
           var key = el.getAttribute('data-i18n');
           if (t[key]) el.textContent = t[key];
